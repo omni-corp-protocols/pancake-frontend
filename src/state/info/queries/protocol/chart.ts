@@ -12,7 +12,7 @@ import { fetchChartData, mapDayData } from '../helpers'
  */
 const PANCAKE_DAY_DATAS = gql`
   query overviewCharts($startTime: Int!, $skip: Int!) {
-    pancakeDayDatas(first: 1000, skip: $skip, where: { date_gt: $startTime }, orderBy: date, orderDirection: asc) {
+    omnitradeDayDatas(first: 1000, skip: $skip, where: { date_gt: $startTime }, orderBy: date, orderDirection: asc) {
       date
       dailyVolumeUSD
       totalLiquidityUSD
@@ -22,11 +22,11 @@ const PANCAKE_DAY_DATAS = gql`
 
 const getOverviewChartData = async (skip: number): Promise<{ data?: ChartEntry[]; error: boolean }> => {
   try {
-    const { pancakeDayDatas } = await request<PancakeDayDatasResponse>(INFO_CLIENT, PANCAKE_DAY_DATAS, {
+    const { omnitradeDayDatas } = await request<PancakeDayDatasResponse>(INFO_CLIENT, PANCAKE_DAY_DATAS, {
       startTime: PCS_V2_START,
       skip,
     })
-    const data = pancakeDayDatas.map(mapDayData)
+    const data = omnitradeDayDatas.map(mapDayData)
     return { data, error: false }
   } catch (error) {
     console.error('Failed to fetch overview chart data', error)

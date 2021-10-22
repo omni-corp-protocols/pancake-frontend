@@ -12,7 +12,7 @@ const GLOBAL_TRANSACTIONS = gql`
     mints: mints(first: 33, orderBy: timestamp, orderDirection: desc) {
       id
       timestamp
-      pair {
+      curve {
         token0 {
           id
           symbol
@@ -30,7 +30,7 @@ const GLOBAL_TRANSACTIONS = gql`
     swaps: swaps(first: 33, orderBy: timestamp, orderDirection: desc) {
       id
       timestamp
-      pair {
+      curve {
         token0 {
           id
           symbol
@@ -50,7 +50,7 @@ const GLOBAL_TRANSACTIONS = gql`
     burns: burns(first: 33, orderBy: timestamp, orderDirection: desc) {
       id
       timestamp
-      pair {
+      curve {
         token0 {
           id
           symbol

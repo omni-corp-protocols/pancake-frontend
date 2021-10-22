@@ -53,10 +53,10 @@ interface PoolsQueryResponse {
 const POOL_AT_BLOCK = (block: number | null, pools: string[]) => {
   const blockString = block ? `block: {number: ${block}}` : ``
   const addressesString = `["${pools.join('","')}"]`
-  return `pairs(
+  return `curves(
     where: { id_in: ${addressesString} }
     ${blockString}
-    orderBy: trackedReserveBNB
+    orderBy: trackedReserveNative
     orderDirection: desc
   ) {
     id

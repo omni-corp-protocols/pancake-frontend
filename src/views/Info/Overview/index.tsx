@@ -84,6 +84,7 @@ const Overview: React.FC = () => {
   }, [chartData])
 
   const allTokens = useAllTokenData()
+  console.log(allTokens)
 
   const formattedTokens = useMemo(() => {
     return Object.values(allTokens)

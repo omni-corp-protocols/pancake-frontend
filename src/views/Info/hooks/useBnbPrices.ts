@@ -14,32 +14,32 @@ export interface BnbPrices {
 const BNB_PRICES = gql`
   query prices($block24: Int!, $block48: Int!, $blockWeek: Int!) {
     current: bundle(id: "1") {
-      bnbPrice
+      nativePrice
     }
     oneDay: bundle(id: "1", block: { number: $block24 }) {
-      bnbPrice
+      nativePrice
     }
     twoDay: bundle(id: "1", block: { number: $block48 }) {
-      bnbPrice
+      nativePrice
     }
     oneWeek: bundle(id: "1", block: { number: $blockWeek }) {
-      bnbPrice
+      nativePrice
     }
   }
 `
 
 interface PricesResponse {
   current: {
-    bnbPrice: string
+    nativePrice: string
   }
   oneDay: {
-    bnbPrice: string
+    nativePrice: string
   }
   twoDay: {
-    bnbPrice: string
+    nativePrice: string
   }
   oneWeek: {
-    bnbPrice: string
+    nativePrice: string
   }
 }
 
@@ -57,10 +57,10 @@ const fetchBnbPrices = async (
     return {
       error: false,
       bnbPrices: {
-        current: parseFloat(data.current?.bnbPrice ?? '0'),
-        oneDay: parseFloat(data.oneDay?.bnbPrice ?? '0'),
-        twoDay: parseFloat(data.twoDay?.bnbPrice ?? '0'),
-        week: parseFloat(data.oneWeek?.bnbPrice ?? '0'),
+        current: parseFloat(data.current?.nativePrice ?? '0'),
+        oneDay: parseFloat(data.oneDay?.nativePrice ?? '0'),
+        twoDay: parseFloat(data.twoDay?.nativePrice ?? '0'),
+        week: parseFloat(data.oneWeek?.nativePrice ?? '0'),
       },
     }
   } catch (error) {

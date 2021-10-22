@@ -9,10 +9,10 @@ const getPriceSubqueries = (tokenAddress: string, blocks: any) =>
   blocks.map(
     (block: any) => `
       t${block.timestamp}:token(id:"${tokenAddress}", block: { number: ${block.number} }) { 
-        derivedBNB
+        derivedNative
       }
       b${block.timestamp}: bundle(id:"1", block: { number: ${block.number} }) { 
-        bnbPrice
+        nativePrice
       }
     `,
   )
@@ -81,7 +81,7 @@ const fetchTokenPriceData = async (
       if (timestamp) {
         tokenPrices.push({
           timestamp,
-          derivedBNB: prices[priceKey]?.derivedBNB ? parseFloat(prices[priceKey].derivedBNB) : 0,
+          derivedBNB: prices[priceKey]?.derivedNative ? parseFloat(prices[priceKey].derivedNative) : 0,
           priceUSD: 0,
         })
       }
@@ -95,7 +95,7 @@ const fetchTokenPriceData = async (
         const tokenPriceIndex = tokenPrices.findIndex((tokenPrice) => tokenPrice.timestamp === timestamp)
         if (tokenPriceIndex >= 0) {
           const { derivedBNB } = tokenPrices[tokenPriceIndex]
-          tokenPrices[tokenPriceIndex].priceUSD = parseFloat(prices[priceKey]?.bnbPrice ?? 0) * derivedBNB
+          tokenPrices[tokenPriceIndex].priceUSD = parseFloat(prices[priceKey]?.nativePrice ?? 0) * derivedBNB
         }
       }
     })

@@ -12,7 +12,7 @@ const TOKEN_TRANSACTIONS = gql`
     mintsAs0: mints(first: 10, orderBy: timestamp, orderDirection: desc, where: { token0: $address }) {
       id
       timestamp
-      pair {
+      curve {
         token0 {
           id
           symbol
@@ -30,7 +30,7 @@ const TOKEN_TRANSACTIONS = gql`
     mintsAs1: mints(first: 10, orderBy: timestamp, orderDirection: desc, where: { token0: $address }) {
       id
       timestamp
-      pair {
+      curve {
         token0 {
           id
           symbol
@@ -48,7 +48,7 @@ const TOKEN_TRANSACTIONS = gql`
     swapsAs0: swaps(first: 10, orderBy: timestamp, orderDirection: desc, where: { token0: $address }) {
       id
       timestamp
-      pair {
+      curve {
         token0 {
           id
           symbol
@@ -68,7 +68,7 @@ const TOKEN_TRANSACTIONS = gql`
     swapsAs1: swaps(first: 10, orderBy: timestamp, orderDirection: desc, where: { token1: $address }) {
       id
       timestamp
-      pair {
+      curve {
         token0 {
           id
           symbol
@@ -88,7 +88,7 @@ const TOKEN_TRANSACTIONS = gql`
     burnsAs0: burns(first: 10, orderBy: timestamp, orderDirection: desc, where: { token0: $address }) {
       id
       timestamp
-      pair {
+      curve {
         token0 {
           id
           symbol
@@ -106,7 +106,7 @@ const TOKEN_TRANSACTIONS = gql`
     burnsAs1: burns(first: 10, orderBy: timestamp, orderDirection: desc, where: { token1: $address }) {
       id
       timestamp
-      pair {
+      curve {
         token0 {
           id
           symbol

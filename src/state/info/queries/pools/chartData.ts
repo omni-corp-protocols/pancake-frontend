@@ -8,11 +8,11 @@ import { mapPairDayData, fetchChartData } from '../helpers'
 const getPoolChartData = async (skip: number, address: string): Promise<{ data?: ChartEntry[]; error: boolean }> => {
   try {
     const query = gql`
-      query pairDayDatas($startTime: Int!, $skip: Int!, $address: Bytes!) {
-        pairDayDatas(
+      query curveDayDatas($startTime: Int!, $skip: Int!, $address: Bytes!) {
+        curveDayDatas(
           first: 1000
           skip: $skip
-          where: { pairAddress: $address, date_gt: $startTime }
+          where: { curveAddress: $address, date_gt: $startTime }
           orderBy: date
           orderDirection: asc
         ) {

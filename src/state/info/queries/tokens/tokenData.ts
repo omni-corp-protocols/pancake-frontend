@@ -51,7 +51,7 @@ const TOKEN_AT_BLOCK = (block: number | undefined, tokens: string[]) => {
       id
       symbol
       name
-      derivedBNB
+      derivedNative
       derivedUSD
       tradeVolumeUSD
       totalTransactions

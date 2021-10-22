@@ -21,13 +21,13 @@ const TOKEN_SEARCH = gql`
 
 const POOL_SEARCH = gql`
   query pools($tokens: [Bytes]!, $id: String) {
-    as0: pairs(first: 10, where: { token0_in: $tokens }) {
+    as0: curves(first: 10, where: { token0_in: $tokens }) {
       id
     }
-    as1: pairs(first: 10, where: { token1_in: $tokens }) {
+    as1: curves(first: 10, where: { token1_in: $tokens }) {
       id
     }
-    asAddress: pairs(first: 1, where: { id: $id }) {
+    asAddress: curves(first: 1, where: { id: $id }) {
       id
     }
   }

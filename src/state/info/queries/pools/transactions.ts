@@ -8,10 +8,10 @@ import { mapMints, mapBurns, mapSwaps } from 'state/info/queries/helpers'
  */
 const POOL_TRANSACTIONS = gql`
   query poolTransactions($address: Bytes!) {
-    mints(first: 35, orderBy: timestamp, orderDirection: desc, where: { pair: $address }) {
+    mints(first: 35, orderBy: timestamp, orderDirection: desc, where: { curve: $address }) {
       id
       timestamp
-      pair {
+      curve {
         token0 {
           id
           symbol
@@ -26,10 +26,10 @@ const POOL_TRANSACTIONS = gql`
       amount1
       amountUSD
     }
-    swaps(first: 35, orderBy: timestamp, orderDirection: desc, where: { pair: $address }) {
+    swaps(first: 35, orderBy: timestamp, orderDirection: desc, where: { curve: $address }) {
       id
       timestamp
-      pair {
+      curve {
         token0 {
           id
           symbol
@@ -46,10 +46,10 @@ const POOL_TRANSACTIONS = gql`
       amount1Out
       amountUSD
     }
-    burns(first: 35, orderBy: timestamp, orderDirection: desc, where: { pair: $address }) {
+    burns(first: 35, orderBy: timestamp, orderDirection: desc, where: { curve: $address }) {
       id
       timestamp
-      pair {
+      curve {
         token0 {
           id
           symbol
